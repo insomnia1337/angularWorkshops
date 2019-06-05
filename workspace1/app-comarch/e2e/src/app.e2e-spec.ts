@@ -4,20 +4,28 @@ import { browser, logging } from 'protractor';
 describe('workspace-project App', () => {
   let page: AppPage;
 
-  beforeEach(() => {
+  beforeAll(() => {
     page = new AppPage();
+    page.navigateTo();
+    const btnLogOut = page.logIn();
+    expect(btnLogOut.isPresent()).toBeTruthy();
   });
+
+  it('should display add item btn', () => {
+    page.navigateTo()
+    expect(page.getAddItemButton().isPresent()).toBeTruthy();
+  })
 
   xit('should display welcome message', () => {
     page.navigateTo();
     expect(page.getTitleText()).toEqual('Welcome to app-comarch!');
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
-  });
+  it('should add new item', () => {
+    page.navigateTo();
+    const form = page.addItem()
+    expect(form.isPresent()).toBeFalsy();
+    const rows = page.searchByTitle();
+    expect(rows.count()).toBe(1)
+  })
 });

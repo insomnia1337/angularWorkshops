@@ -1,7 +1,7 @@
 
 
 <ng-template #formTpl>
-<form #f="ngForm" class="form-inline bg-info p-2">
+<form #f="ngForm" id="auth" class="form-inline bg-info p-2">
   <input required minlength="4" ngModel="admin@localhost" name="username" type="text" class="form-control" placeholder="login">
   <input required  ngModel="admin" name="password" type="text" class="form-control" placeholder="password">
   <button class="btn btn-primary" (click)="logIn(f)">log in</button>

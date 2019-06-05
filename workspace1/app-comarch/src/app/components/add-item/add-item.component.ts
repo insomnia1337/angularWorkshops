@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class AddItemComponent implements OnInit {
   @Input() newItem: Subject<any>;
+  openedModal: any;
   constructor(private modalService: NgbModal) { 
   
   }
@@ -18,10 +19,11 @@ export class AddItemComponent implements OnInit {
 
   open(content) {
     console.log(content)
-    this.modalService.open(content)
+    this.openedModal = this.modalService.open(content)
   }
 
   sendItem(value) {
     this.newItem.next(value)
+    this.openedModal.close()
   }
 }
