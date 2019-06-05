@@ -22,7 +22,6 @@ export class AddItemComponent implements OnInit {
   }
 
   sendItem(value) {
-    debugger;
     this.newItem.next(value)
   }
 }

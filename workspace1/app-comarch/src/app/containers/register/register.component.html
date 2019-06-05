@@ -1,3 +1,32 @@
-<p>
-  register works!
-</p>
+<div class="row">
+  <div class="col-6">
+    <form [formGroup]="form">
+      <div class="card card-body mb-2">
+        <input type="text" formControlName="username">
+        <div class="badge badge-warning">
+          {{form.get('username').errors | json}}
+        </div>
+      </div>
+      <div class="card card-body">
+        <input type="date" formControlName="birthDate">
+        <div class="badge badge-warning">
+          {{form.get('birthDate').errors | json}}
+        </div>
+      </div>
+
+      <div class="card card-body" formGroupName="hobbies">
+        <label class="badge badge-info" *ngFor="let item of form.get('hobbies').value | keyvalue">
+          {{item.key}}
+          <input type="checkbox" [formControlName]="item.key">
+        </label>
+        <div class="badge badge-warning">
+          {{form.get('hobbies').errors | json}}
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-6">
+    {{form.valid}}
+    <pre>{{form.value | json}}</pre>
+  </div>
+</div>

@@ -37,7 +37,6 @@ export class ItemsComponent implements OnInit, OnDestroy {
     })
 
     this.filters.subscribe((value) => {
-      debugger;
       this.fetchItems()
     })
     // this.newItem.next(1);
@@ -64,7 +63,6 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   updateFilters(key, value) {
-    debugger;
     this.filters.next({
       ...this.filters.value,
       [key]: value

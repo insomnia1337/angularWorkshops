@@ -10,7 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { DataGridComponent } from './components/data-grid/data-grid.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthComponent } from './components/auth/auth.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CORSInterceptor } from './utils/http-interceptor';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -33,7 +33,8 @@ import { SharedModule } from './modules/shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: CORSInterceptor, multi: true}
