@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-3">
+    <app-search
+    [filters]="filters"
+    [controls]="['title', 'priceFrom']"
+    ></app-search>
+  </div>
+  <div class="col-9">
+
+    <div class="row">
+      <div class="col-2">
+        <app-add-item [newItem]=newItem>
+        </app-add-item>
+      </div>
+      <div class="col-2">
+        <select [ngModel]='filters.value.itemsPerPage' class="form-control"
+         #ipp (change)="updateFilters('itemsPerPage', ipp.value)">
+          <option *ngFor="let opt of [2,5,10]">
+            {{opt}}
+          </option>
+        </select>
+      </div>
+      <div class="col-8">
+        {{total | json}}
+        <ngb-pagination
+        [collectionSize]="total"
+        [maxSize]="8"
+        [pageSize]="filters.value.itemsPerPage"
+        (pageChange)="updateFilters('currentPage', $event)"
+        >
+        </ngb-pagination>
+      </div>
+    </div>
+    <app-data-grid (actionEvent)="remove($event)" [config]="config" [headers]=headers [data]="items">
+    </app-data-grid>
+  </div>
+</div>

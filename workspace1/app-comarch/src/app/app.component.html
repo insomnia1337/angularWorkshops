@@ -1,0 +1,18 @@
+<div class="container">
+    <nav class="nav nav-pills nav-tabs mt-2 mb-2">
+      <a [routerLink]="['/items']"
+       routerLinkActive="active" 
+       class="nav-item nav-link">items</a>
+    
+       <a [routerLink]="['/workers']" 
+      routerLinkActive="active" 
+      class="nav-item nav-link">workers</a>
+      
+      <a [routerLink]="['/register']" 
+      routerLinkActive="active" 
+      class="nav-item nav-link">register form</a>
+
+      <app-auth></app-auth>
+    </nav>
+  <router-outlet></router-outlet>
+</div>
