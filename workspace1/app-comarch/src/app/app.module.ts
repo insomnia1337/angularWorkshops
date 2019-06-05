@@ -14,6 +14,7 @@ import { FormsModule } from "@angular/forms";
 import { CORSInterceptor } from './utils/http-interceptor';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: CORSInterceptor, multi: true}
